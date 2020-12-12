@@ -32,5 +32,21 @@ class Product extends Database {
         $sql = "SELECT * FROM $this->table WHERE product_id ='$id'";
         return $this->QueryOne($sql);
     }
+
+    function product_filter($categorieIds, $minPrice, $maxPrice){
+        $sql = "SELECT * 
+                            FROM 
+                                $this->table 
+                            WHERE 
+                                product_catid IN ($categorieIds) 
+                            AND 
+                                product_price
+                            BETWEEN 
+                                $minPrice AND $maxPrice 
+                            ORDER BY 
+                                product_createdat DESC";
+        return $this->QueryAll($sql);
+        
+    }
 }
 ?>

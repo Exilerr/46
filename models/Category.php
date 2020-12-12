@@ -39,5 +39,9 @@ class Category extends Database {
         $sql = "SELECT * FROM $this->table WHERE category_status='1' AND category_id='$catid'";
         return $this->QueryOne($sql);
     }
+    function get_list_categories_child($parentCates){
+        $sql = "SELECT * FROM $this->table WHERE category_parentid IN ($parentCates)";
+        return $this->QueryAll($sql);
+    }
 }
 ?>

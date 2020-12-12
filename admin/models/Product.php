@@ -56,4 +56,7 @@ class Product extends Database {
         }
         return TRUE;
     }
+    function product_filter($categoriesId, $minPrice, $maxPrice){
+        $sql = "SELECT * FROM $this->table WHERE product_catid IN ($categoriesId) AND BETWEEN $minPrice AND $maxPrice";
+    }
 }
